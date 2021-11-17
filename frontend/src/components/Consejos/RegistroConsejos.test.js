@@ -1,6 +1,5 @@
 import assert from 'assert';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import RegistroConsejos from "./RegistroConsejos";
 import { configure } from 'enzyme';

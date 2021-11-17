@@ -26,35 +26,25 @@ export default class Consejos extends Component {
   }
 
   getCouncilsFromDB() {
-    auth.verifyToken()
-      .then(value => {
-        if (value) {
-          axios.get(`/consejo/por_usuario/${this.state.cedula}/${getTodaysDate()}`)
-            .then(res => {
-              if (res.data.success) {
-                this.setState({
-                  consejos: res.data.councils
-                });
-              }
-            })
-            .catch((err) => console.log(err));
-          axios.get(`/consejo/anteriores/por_usuario/${this.state.cedula}/${getTodaysDate()}`)
-            .then(res => {
-              if (res.data.success) {
-                this.setState({
-                  anteriores: res.data.councils
-                });
-              }
-            })
-            .catch((err) => console.log(err));
-        } else {
+    axios.get(`/consejo/por_usuario/${this.state.cedula}/${getTodaysDate()}`)
+      .then(res => {
+        if (res.data.success) {
           this.setState({
-            redirect: true
-          })
-          auth.logOut();
+            consejos: res.data.councils
+          });
         }
       })
       .catch((err) => console.log(err));
+    axios.get(`/consejo/anteriores/por_usuario/${this.state.cedula}/${getTodaysDate()}`)
+      .then(res => {
+        if (res.data.success) {
+          this.setState({
+            anteriores: res.data.councils
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  
   }
 
   getCouncils() {

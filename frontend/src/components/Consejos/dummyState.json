@@ -1,0 +1,26 @@
+{
+    "anteriores" : [{
+        "consecutivo" : 1,
+        "id_estado_punto": 1,
+        "puntos" : ["Organizacion de actividades semana siguiente", "Informe de ventas del pasado lunes 10 de septiembre"],
+        "carrera" : "Ing. Computacion",
+        "campus" : "Central",
+        "lugar" : "Cartago",
+        "nombre_consejo" : "Principal",
+        "institucion" : "ITCR",
+        "fecha" : "14-11-2021",
+        "hora" : "13:30"
+    }],
+    "proximos" : [{
+        "consecutivo" : 2,
+        "id_estado_punto": 1,
+        "puntos" : ["Organizacion de actividades semana siguiente",],
+        "carrera" : "Ing. Materiales",
+        "campus" : "",
+        "lugar" : "",
+        "nombre_consejo" :"",
+        "institucion" : "",
+        "fecha" : "15-09-2021",
+        "hora" : "12:30"
+    }]
+}
