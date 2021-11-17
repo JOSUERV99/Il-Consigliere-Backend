@@ -126,49 +126,40 @@ export default class RegistroConsejos extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    auth.verifyToken()
-      .then(value => {
-        if (value) {
-          axios.get(`/consejo/${this.state.consecutivo}`)
-            .then(resp => {
-              if (resp.data.success) {
-                myAlert('Atención', `El número de consecutivo: ${this.state.consecutivo} ya existe en el sistema.`, 'warning');
-              } else {
-                if(this.state.fecha <= this.state.limite_solicitud){
-                  myAlert('Atención', `La fecha limite de solicitudes no puede ser posterior o igual a la fecha de realización consejo.`, 'warning');
-                } else {
-                  const consejo = {
-                    consecutivo: this.state.consecutivo,
-                    lugar: this.state.lugar,
-                    fecha: this.state.fecha,
-                    hora: this.state.hora,
-                    limite_solicitud: this.state.limite_solicitud,
-                    id_tipo_sesion: this.state.sesionSeleccionada,
-                    puntos: this.state.puntos,
-                    cedula: auth.getInfo().cedula,
-                    id_estado_punto: 1
-                  };
-                  axios.post('/consejo', consejo)
-                    .then(res => {
-                      if (res.data.success) {
-                        this.props.history.push('/gConsejos');
-                      } else {
-                        myAlert('Oh no!', 'Error interno del servidor.', 'error');
-                      }
-                    })
-                    .catch((err) => console.log(err));
-                }
-              }
-            })
-            .catch((err) => console.log(err));
+    this.setState({cedula : " "})
+    axios.get(`/consejo/${this.state.consecutivo}`)
+      .then(resp => {
+        if (resp.data.success) {
+          myAlert('Atención', `El número de consecutivo: ${this.state.consecutivo} ya existe en el sistema.`, 'warning');
         } else {
-          this.setState({
-            redirect: true
-          })
-          auth.logOut();
+          if(this.state.fecha <= this.state.limite_solicitud){
+            myAlert('Atención', `La fecha limite de solicitudes no puede ser posterior o igual a la fecha de realización consejo.`, 'warning');
+          } else {
+            const consejo = {
+              consecutivo: this.state.consecutivo,
+              lugar: this.state.lugar,
+              fecha: this.state.fecha,
+              hora: this.state.hora,
+              limite_solicitud: this.state.limite_solicitud,
+              id_tipo_sesion: this.state.sesionSeleccionada,
+              puntos: this.state.puntos,
+              cedula: auth.getInfo().cedula,
+              id_estado_punto: 1
+            };
+            axios.post('/consejo', consejo)
+              .then(res => {
+                if (res.data.success) {
+                  this.props.history.push('/gConsejos');
+                } else {
+                  myAlert('Oh no!', 'Error interno del servidor.', 'error');
+                }
+              })
+              .catch((err) => console.log(err));
+          }
         }
       })
       .catch((err) => console.log(err));
+        
   }
 
   deleteDiscussion(e, i) {
@@ -241,14 +232,14 @@ export default class RegistroConsejos extends Component {
   }
 
   render() {
-    return (this.state.redirect ? <Redirect to='/' /> :
+    return (this.state.redirect ? <></> :
       <>
-        <Navegacion />
+        {/* <Navegacion /> */}
         <div className="row m-0">
           <div className="col-md-10 m-auto">
             <div className="card border-primary consejo-card">
               <div className="card-body">
-                <Link to='/gConsejos'><i className="fas fa-times fa-lg m-2 ubicar-salida" style={{ color: 'navy' }}></i></Link>
+                {/* <Link to='/gConsejos'><i className="fas fa-times fa-lg m-2 ubicar-salida" style={{ color: 'navy' }}></i></Link> */}
                 <h3 className="card-title text-center mb-4">Nuevo Consejo</h3>
                 <form onSubmit={this.handleSubmit}>
                   <div className='todo-registro'>
@@ -317,8 +308,8 @@ export default class RegistroConsejos extends Component {
                     </div>
                   </div>
                   <div className="form-group d-flex justify-content-around">
-                    <button type="submit" className="btn btn-outline-primary mt-4 editar-button">Crear Consejo</button>
-                    <Link className="btn btn-outline-secondary mt-4 editar-button" to='/gConsejos'>Cancelar</Link>
+                    <button id="submit" type="submit" className="btn btn-outline-primary mt-4 editar-button">Crear Consejo</button>
+                    {/* <Link className="btn btn-outline-secondary mt-4 editar-button" to='/gConsejos'>Cancelar</Link> */}
                   </div>
                 </form>
               </div>

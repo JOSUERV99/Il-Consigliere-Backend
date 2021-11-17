@@ -76,7 +76,7 @@ export default class Consejos extends Component {
             <div className="card-body p-2">
               <div className='d-flex justify-content-between align-items-center'>
                 <p className="card-title m-0">{consecutivo}</p>
-                <Link to={`/consejos/${consecutivo}`}><i className="far fa-eye fa-lg ml-2" style={{ color: "navy" }}></i></Link>
+                
               </div>
               <p className='m-0'>{institucion}</p>
               <p className='m-0'>{carrera}</p>
@@ -113,7 +113,6 @@ export default class Consejos extends Component {
             <div className="card-body p-2">
               <div className='d-flex justify-content-between align-items-center'>
                 <p className="card-title m-0">{consecutivo}</p>
-                <Link to={`/consejos/${consecutivo}`}><i className="far fa-eye fa-lg ml-2" style={{ color: "navy" }}></i></Link>
               </div>
               <p className='m-0'>{institucion}</p>
               <p className='m-0'>{carrera}</p>
