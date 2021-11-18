@@ -1,13 +1,13 @@
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-var assert = require('assert');
+// let chai = require('chai');
+// let chaiHttp = require('chai-http');
+// var assert = require('assert');
 
 const expect = require('chai').expect;
 const nock = require('nock');
 let should = chai.should();
 require('dotenv').config();
 
-chai.use(chaiHttp);
+// chai.use(chaiHttp);
 
 const db = require('../database/models');
 
